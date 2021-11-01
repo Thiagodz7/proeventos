@@ -1,0 +1,54 @@
+<h1>Lista de Eventos!</h1>
+<hr>
+<div action="" class="form-inline">
+  <div class="from-group mb-2">
+    <input type="text" class="form-control mr-2" placeholder="Buscar" [(ngModel)]="filtroLista">
+    <button class="btn btn-outline-success">Buscar</button>
+  </div>
+</div>
+
+<table class="table table-striped">
+<thead class="thead-dark">
+  <tr>
+    <th>
+      <button class="btn btn-outline-light btn sm" (click)="AlterarImagem()">
+        {{mostrarImagem ? 'Ocultar':'Mostrar'}}
+      </button>
+    </th>
+    <th>#</th>
+    <th>Tema</th>
+    <th>Local</th>
+    <th>Data</th>
+    <th>Qtd Pessoas</th>
+    <th>Lote</th>
+    <th>Opções</th>
+  </tr>
+</thead>
+<tbody *ngIf="eventos && eventos.length">
+  <tr *ngFor="let evento of eventosFiltrados">
+    <td><img *ngIf="mostrarImagem" src="/assets/{{evento.imagemUrl}}" alt=""
+      [style.width.px]="widthImg"
+      [style.height.px]="heightImg"
+      [style.margin.px]="marginImg">
+    </td>
+    <td>{{evento.eventoId}}</td>
+    <td>{{evento.tema}}</td>
+    <td>{{evento.local}}</td>
+    <td>{{evento.dataEvento}}</td>
+    <td>{{evento.qtdPessoas}}</td>
+    <td>{{evento.lote}}</td>
+    <td><button class="btn btn-danger">Editar</button><button class="btn btn-warning">Salvar</button></td>
+  </tr>
+</tbody>
+<tfoot *ngIf="!eventos.length">
+  <tr>
+    <td colspan="8">
+      <h4>Nenhum evento marcado</h4>
+    </td>
+  </tr>
+</tfoot>
+</table>
+
+
+
+
